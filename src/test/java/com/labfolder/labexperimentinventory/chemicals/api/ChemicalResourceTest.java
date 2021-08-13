@@ -2,7 +2,6 @@ package com.labfolder.labexperimentinventory.chemicals.api;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.restassured.http.ContentType;
 import com.labfolder.labexperimentinventory.chemicals.models.Chemical;
 import com.labfolder.labexperimentinventory.chemicals.models.CreateChemicalRequest;
@@ -20,16 +19,6 @@ import java.util.UUID;
 import static com.jayway.restassured.RestAssured.given;
 
 class ChemicalResourceTest extends ResourceTest {
-
-    public static <T> T fromJSON(ObjectMapper mapper, final TypeReference<T> type, final String jsonPacket) {
-        T data = null;
-        try {
-            data = mapper.readValue(jsonPacket, type);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return data;
-    }
 
     @Test
     public void when_a_request_is_received_to_create_a_chemical_it_is_successful() throws JsonProcessingException {
