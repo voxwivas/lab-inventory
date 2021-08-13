@@ -61,8 +61,8 @@ To use this option use the following command in sequence from the project root.
 <p>To compile with tests use : <br/><code>mvn clean package</code> </p>
 <p>To compile without tests use :<br/> <code>mvn clean package -DskipTests=true </code></p>
 
-<p>After executing either of the above commands use <code>java -jar target/lab-experiment-inventory-0.0.1-SNAPSHOT.jar
-</code> to run the service</p>
+<p>After executing either of the above commands use the below command to run the service .<br/><code>java -jar target/lab-experiment-inventory-0.0.1-SNAPSHOT.jar
+</code></p>
 
 #### Using the springboot maven plugin
 
@@ -72,7 +72,8 @@ This option is the most straight forward as it only requires the command below o
 ## Interacting with the various endpoints
 
  There is a REST documentation tool already provided with the code base to be found on the project base URL on the following path <code>/swagger-ui.html</code>. 
- <br/>The interface should look something like the attached images<br/>
+ 
+ The interface should look something like the attached images<br/>
 
 ![](Swagger-UI.png)
 
@@ -80,9 +81,8 @@ An image showing collapse api contracts
 
 ![](Swagger-UI1.png)
 
-Assuming the service is running on <code>localhost:8080<code/>  the following link should lead to the api documentation<br/>
+Assuming the service is running on <code>localhost:8080</code>  the link below should lead to the api documentation<br/>
  [Swagger UI endpoint](http://localhost:8080/swagger-ui.html)
-
 
 ## Expected enhancements
 
