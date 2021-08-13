@@ -1,11 +1,16 @@
 package com.labfolder.labexperimentinventory.devices.store;
 
+import com.labfolder.labexperimentinventory.LabExperimentInventoryApplication;
 import com.labfolder.labexperimentinventory.devices.models.Device;
 import com.labfolder.labexperimentinventory.exceptions.DeviceExistsException;
 import com.labfolder.labexperimentinventory.exceptions.DeviceNotFoundException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -15,13 +20,19 @@ import java.util.function.Consumer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ActiveProfiles(value = {"integration-test"})
+@SpringBootTest(classes = LabExperimentInventoryApplication.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 class DeviceStoreTest {
 
     private final List<DeviceStore> deviceStores = new ArrayList<>();
+    @Autowired
+    private DeviceStore sqlStore;
 
     @BeforeEach
     public void setUp() {
         deviceStores.add(new FakeDeviceStore());
+        deviceStores.add(sqlStore);
     }
 
     @AfterEach
