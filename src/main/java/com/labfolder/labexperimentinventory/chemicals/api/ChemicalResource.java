@@ -14,7 +14,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(value = ChemicalResource.CHEMICAL_RESOURCE_PATH)
 public class ChemicalResource {
-    public static final String CHEMICAL_RESOURCE_PATH = "/apis/chemicals";
+    public static final String CHEMICAL_RESOURCE_PATH = "/api/chemicals";
 
     @Autowired
     private ChemicalService chemicalService;

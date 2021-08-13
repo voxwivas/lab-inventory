@@ -47,7 +47,6 @@ class ChemicalResourceTest extends ResourceTest {
         Assertions.assertEquals(1, id.getId());
     }
 
-
     @Test
     public void when_a_request_is_received_to_get_a_chemical_by_id_it_is_successful() throws JsonProcessingException {
         var createChemicalRequest = generateFakeChemical("Chemical 1");
