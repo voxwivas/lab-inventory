@@ -1,5 +1,6 @@
 package com.labfolder.labexperimentinventory.util;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
@@ -38,4 +39,15 @@ public class ResourceTest {
     public void can_initialise() {
 
     }
+
+    public static <T> T fromJSON(ObjectMapper mapper, final TypeReference<T> type, final String jsonPacket) {
+        T data = null;
+        try {
+            data = mapper.readValue(jsonPacket, type);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return data;
+    }
+
 }
