@@ -1,11 +1,16 @@
 package com.labfolder.labexperimentinventory.samples.store;
 
+import com.labfolder.labexperimentinventory.LabExperimentInventoryApplication;
 import com.labfolder.labexperimentinventory.exceptions.SampleExistsException;
 import com.labfolder.labexperimentinventory.exceptions.SampleNotFoundException;
 import com.labfolder.labexperimentinventory.samples.models.Sample;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -15,13 +20,20 @@ import java.util.function.Consumer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ActiveProfiles(value = {"integration-test"})
+@SpringBootTest(classes = LabExperimentInventoryApplication.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 class SampleStoreTest {
 
     private final List<SampleStore> sampleStores = new ArrayList<>();
 
+    @Autowired
+    private SampleStore sqlStore;
+
     @BeforeEach
     public void setUp() {
         sampleStores.add(new FakeSampleStore());
+        sampleStores.add(sqlStore);
     }
 
     @AfterEach

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.*;
 
-@Component
 public class FakeChemicalStore implements ChemicalStore {
 
     private final Map<Long, Chemical> chemicals = new HashMap<>();
