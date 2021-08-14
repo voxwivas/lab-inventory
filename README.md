@@ -92,3 +92,4 @@ Assuming the service is running on <code>localhost:8080</code>  the link below s
 - Optimise persistence layer for quicker queries
 - Optimise the test cases for short execution times
 - Enhance Api documentation beyond the default auto generated description
+- Add a migration tool preferably Flyway to handle database schema changes
